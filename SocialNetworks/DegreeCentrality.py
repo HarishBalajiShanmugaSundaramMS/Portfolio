@@ -52,5 +52,5 @@ for x in range(1, 6):  # specify the number of nodes you want to add, Here 6-1 =
 
 pos = nx.spring_layout(G)
 edges = G.edges()
-nx.draw_networkx(G, pos, node_size=300, edge_color='Red',
+nx.draw_networkx(G, pos, node_size=500, edge_color='Red',
                  with_labels=True, font_color='Black', node_color='Pink')
