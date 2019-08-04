@@ -94,6 +94,10 @@ def calldelete():
     l.config(text=(' '))
 
 
+def applySettings():
+    tex = str(e2.get())
+    msg = messagebox.showwarning('Alert', tex)
+
 def closeWindow():
     form.destroy()
 
@@ -200,6 +204,14 @@ for text, mode in MODES:
 
 # Controls of Third Tab
 
+textlab6 = Label(tab3, text='Select your Path:',bg='#ececec')
+textlab6.config(font=('bold'))
+textlab6.pack()
+
+e2 = Entry(tab3)
+e2.config(bg='light yellow', font=('bold'), bd=3, width=400)
+e2.pack()
+
 textlab3 = Label(
     tab3, text='Select the langage you want to learn:', bg='#ececec')
 textlab3.config(font=('bold'))
@@ -236,6 +248,11 @@ o_variable3.set(OptionList3[2])
 opt3 = OptionMenu(tab3, o_variable3, *OptionList3)
 opt3.config(width=5, font=('TkDefaultFont', 9, 'bold'))
 opt3.pack()
+
+
+b5 = Button(tab3, text='Apply', command=applySettings, width=10, bd=5)
+b5.config(font=('bold'))
+b5.pack()
 
 tab_parent.pack(expand=1, fill='both')
 
