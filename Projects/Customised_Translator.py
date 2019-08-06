@@ -260,30 +260,20 @@ b5.pack()
 
 # Controls of Fourth Tab
 
-
-def showCalendar():
-
-    top = Toplevel(tab4)
-
-    cal = Calendar(top, selectmode='day', background='#ececec', foreground='Black',
+cal = Calendar(tab4, selectmode='day', background='#ececec', foreground='Black',
                    tooltipforeground='Green', bordercolor='Black', selectbackground='Red', selectforeground='Green',
                    weekendbackground='Red', weekendforeground='Red',
                    othermonthforeground='gray', showothermonthdays=FALSE,
                    headersforeground='Blue', borderwidth=2)
-    date = cal.datetime.today() + cal.timedelta(days=2)
-    cal.calevent_create(date, 'Hello World', 'message')
-    cal.calevent_create(date, 'Reminder 2', 'reminder')
-    cal.calevent_create(date + cal.timedelta(days=-2),
+date = cal.datetime.today() + cal.timedelta(days=2)
+cal.calevent_create(date, 'Hello World', 'message')
+cal.calevent_create(date, 'Reminder 2', 'reminder')
+cal.calevent_create(date + cal.timedelta(days=-2),
                         'Reminder 1', 'reminder')
 
-    cal.tag_config('reminder', highlightbackground='red', foreground='green')
+cal.tag_config('reminder', highlightbackground='red', foreground='green')
 
-    cal.pack(fill="both", expand=True)
-    #Label(top, text="Hover over the events.").pack()
-
-
-Button(tab4, text='Calendar with events',
-       command=showCalendar).pack(padx=10, pady=10)
+cal.pack(fill="both", expand=True)
 
 
 tab_parent.pack(expand=1, fill='both')
