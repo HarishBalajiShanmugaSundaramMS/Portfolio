@@ -5,6 +5,8 @@ import re
 import tkinter as tk
 from tkinter import *
 from tkinter import filedialog, messagebox, ttk
+from tkcalendar import Calendar, DateEntry
+from PyQt5 import QtGui
 
 import pymysql
 from googletrans import Translator
@@ -49,11 +51,13 @@ tab_parent = ttk.Notebook(form)
 tab1 = ttk.Frame(tab_parent)
 tab2 = ttk.Frame(tab_parent)
 tab3 = ttk.Frame(tab_parent)
+tab4 = ttk.Frame(tab_parent)
 
 
 tab_parent.add(tab1, text='Translate')
 tab_parent.add(tab2, text='Reports')
 tab_parent.add(tab3, text='Preferences')
+tab_parent.add(tab4, text='Calendar')
 
 
 show = Label(form, text='Using Translation to Learn a New Language')
@@ -97,6 +101,7 @@ def calldelete():
 def applySettings():
     tex = str(e2.get())
     msg = messagebox.showwarning('Alert', tex)
+
 
 def closeWindow():
     form.destroy()
@@ -169,8 +174,7 @@ b2 = Button(tab1, text='Clear', command=calldelete, width=10, bd=5)
 b2.config(font=('bold'))
 b4 = Button(tab1, text='Progress', command=previewCSV, width=10, bd=5)
 b4.config(font=('bold'))
-b3 = Button(tab1, text='Close', command=closeWindow, width=10, bd=5)
-b3.config(font=('bold'))
+
 
 c1 = Checkbutton(tab1, text='Capture Datalogs', bg='#ececec',
                  offvalue='unchecked', onvalue='checked')
@@ -178,7 +182,7 @@ c1.config(font=('bold'))
 c1.pack()
 
 
-for widget_tab1 in (e1, l, b1, b2, b4, b3):
+for widget_tab1 in (e1, l, b1, b2, b4):
     widget_tab1.pack()
 
 # Controls of Second Tab
@@ -204,7 +208,7 @@ for text, mode in MODES:
 
 # Controls of Third Tab
 
-textlab6 = Label(tab3, text='Select your Path:',bg='#ececec')
+textlab6 = Label(tab3, text='Select your Path:', bg='#ececec')
 textlab6.config(font=('bold'))
 textlab6.pack()
 
@@ -254,6 +258,39 @@ b5 = Button(tab3, text='Apply', command=applySettings, width=10, bd=5)
 b5.config(font=('bold'))
 b5.pack()
 
+# Controls of Fourth Tab
+
+
+def showCalendar():
+
+    top = Toplevel(tab4)
+
+    cal = Calendar(top, selectmode='day', background='#ececec', foreground='Black',
+                   tooltipforeground='Green', bordercolor='Black', selectbackground='Red', selectforeground='Green',
+                   weekendbackground='Red', weekendforeground='Red',
+                   othermonthforeground='gray', showothermonthdays=FALSE,
+                   headersforeground='Blue', borderwidth=2)
+    date = cal.datetime.today() + cal.timedelta(days=2)
+    cal.calevent_create(date, 'Hello World', 'message')
+    cal.calevent_create(date, 'Reminder 2', 'reminder')
+    cal.calevent_create(date + cal.timedelta(days=-2),
+                        'Reminder 1', 'reminder')
+
+    cal.tag_config('reminder', highlightbackground='red', foreground='green')
+
+    cal.pack(fill="both", expand=True)
+    #Label(top, text="Hover over the events.").pack()
+
+
+Button(tab4, text='Calendar with events',
+       command=showCalendar).pack(padx=10, pady=10)
+
+
 tab_parent.pack(expand=1, fill='both')
+
+b3 = Button(form, text='Close', command=closeWindow,
+            width=10, bd=5, fg='black', bg='lightblue')
+b3.config(font=('bold'))
+b3.pack()
 
 form.mainloop()
