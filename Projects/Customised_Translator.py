@@ -5,7 +5,7 @@ import re
 import tkinter as tk
 from tkinter import *
 from tkinter import filedialog, messagebox, ttk
-
+import smtplib
 import pymysql
 from googletrans import Translator
 from PIL import Image, ImageTk
@@ -43,8 +43,6 @@ with open(os.path.join(dir, 'Learning German.csv'), 'a+') as translation_file:
 
 
 def __CancelCommand(event=None): pass
-
-
 form.protocol('WM_DELETE_WINDOW', __CancelCommand)
 
 tab_parent = ttk.Notebook(form)
@@ -55,13 +53,11 @@ tab4 = ttk.Frame(tab_parent)
 tab5 = ttk.Frame(tab_parent)
 
 
-
 tab_parent.add(tab1, text='Translate')
 tab_parent.add(tab2, text='Reports')
 tab_parent.add(tab3, text='Preferences')
 tab_parent.add(tab4, text='Calendar')
 tab_parent.add(tab5, text='Feedback')
-
 
 
 show = Label(form, text='Using Translation to Learn a New Language')
@@ -104,23 +100,18 @@ def applySettings():
     msg = messagebox.showwarning('Alert', tex)
 
 
-
 def closeWindow():
     form.destroy()
 
 
-#firstclick = True
-# def on_entry_click(event):
-#    global firstclick
-#    if firstclick:  # if this is the first time they clicked it
-#        firstclick = True
-#        e1.delete(0, "end")  # delete all the text in the entry
-#
-#
-# def on_focusout(event):
-#    if e1.get() == '':
-#        e1.insert(0, 'Enter your text in English')
-#        e1.config(fg='gray')
+def sendFeedback():
+    content=str(t2.get('1.0', END))
+    mail=smtplib.SMTP('smtp.gmail.com',587)
+    mail.ehlo()
+    mail.starttls()
+    mail.login('translated2020@gmail.com','Translate@2020')
+    mail.sendmail('translated2020@gmail.com','balajiharishmca@gmail.com',content)
+    mail.close()
 
 
 def previewCSV():
@@ -153,16 +144,9 @@ w.pack()
 textlab1 = Label(tab1, text='Enter Your Text:', bg='#ececec')
 textlab1.config(font='Arial 15 bold')
 textlab1.pack()
+
 e1 = Entry(tab1)
-
-#e1.insert(0, 'Enter your text in English')
-
-
 e1.config(bg='light yellow', font=('bold'), bd=3, width=400)
-
-#e1.bind('<FocusIn>', on_entry_click)
-#e1.bind('<FocusOut>', on_focusout)
-
 e1.pack()
 
 
@@ -262,10 +246,10 @@ opt3.config(width=5, font='Arial 15 bold')
 opt3.pack()
 
 
-b5 = Button(tab3, text='Save Preferences', command=applySettings, width=15, bd=5)
+b5 = Button(tab3, text='Save Preferences',
+            command=applySettings, width=15, bd=5)
 b5.config(font='Arial 15 bold')
 b5.pack()
-
 
 
 # Controls of Fourth Tab
@@ -287,5 +271,17 @@ b3 = Button(form, text='Close', command=closeWindow,
             width=10, bd=5, fg='black', bg='lightblue')
 b3.config(font='Arial 15 bold')
 b3.pack()
+
+
+t2 = Text(tab5, height=1, width=45, bg='lightyellow')
+t2.configure(font='Arial 15 bold')
+t2.pack()
+
+
+b6 = Button(tab5, text='Send', command=sendFeedback(),
+            width=10, bd=5, fg='black', bg='lightblue')
+b6.config(font='Arial 15 bold')
+b6.pack()
+
 
 form.mainloop()
