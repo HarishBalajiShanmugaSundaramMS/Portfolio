@@ -155,7 +155,7 @@ e1 = Entry(tab1)
 #e1.insert(0, 'Enter your text in English')
 
 
-e1.config(bg='light yellow', font=('bold'), bd=3)
+e1.config(bg='light yellow', font=('bold'), bd=3, width=400)
 
 #e1.bind('<FocusIn>', on_entry_click)
 #e1.bind('<FocusOut>', on_focusout)
@@ -179,6 +179,7 @@ b4.config(font=('bold'))
 c1 = Checkbutton(tab1, text='Capture Datalogs', bg='#ececec',
                  offvalue='unchecked', onvalue='checked')
 c1.config(font=('bold'))
+c1.select()
 c1.pack()
 
 
