@@ -1,8 +1,8 @@
-# ===================================================
+# ====================================================
 # Title:  Deactivating Close Button in the Title Bar
 # Author: HarishBalaji ShanmugaSundaram
 # Date:   21 August 2019
-# ===================================================
+# ====================================================
 
 import tkinter as tk
 from tkinter import *
