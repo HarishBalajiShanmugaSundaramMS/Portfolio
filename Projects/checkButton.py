@@ -1,5 +1,12 @@
+# ======================================
+# Title:  Tkinter CheckButtons
+# Author: HarishBalaji ShanmugaSundaram
+# Date:   21 August 2019
+# ======================================
+
 import tkinter as tk
 from tkinter import *
+
 form = tk.Tk()
 form.title('Tkinter Check Button')
 form.geometry('300x100')
@@ -23,5 +30,3 @@ labelControl02 = Label(form, text=chkValue02.get(),
                        font='Arial 15 bold', fg='red')
 labelControl02.pack()
 form.mainloop()
-
-
