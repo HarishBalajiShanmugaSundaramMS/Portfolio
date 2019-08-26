@@ -1,5 +1,11 @@
+# ======================================
+# Title:  Tkinter Spinners
+# Author: HarishBalaji ShanmugaSundaram
+# Date:   22 August 2019
+# ======================================
 import tkinter as tk
 from tkinter import *
+
 form = tk.Tk()
 form.title('Tkinter Spinners')
 form.geometry('250x200')
@@ -23,4 +29,3 @@ spin03 = Spinbox(form, from_=-15, to=-10, bd=5)
 spin03.config(font='Arial 15 bold', fg='black', bg='lightyellow')
 spin03.pack()
 form.mainloop()
-
