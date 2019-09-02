@@ -53,13 +53,13 @@ indiantime()
 widthValue = 100
 heightValue = 65
 
-img1 = Image.open('GermanFlag.png')
+img1 = Image.open('./Images/GermanFlag.png')
 img1 = img1.resize((widthValue, heightValue), Image.ANTIALIAS)
 photoImg1 = ImageTk.PhotoImage(img1)
 panel1 = Label(root, image=photoImg1)
 panel1.config(borderwidth=2, relief='raised')
 
-img2 = Image.open('IndianFlag.png')
+img2 = Image.open('./Images/IndianFlag.png')
 img2 = img2.resize((widthValue, heightValue), Image.ANTIALIAS)
 photoImg2 = ImageTk.PhotoImage(img2)
 panel2 = Label(root, image=photoImg2)
