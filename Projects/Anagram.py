@@ -10,6 +10,8 @@ import enchant
 
 d = enchant.Dict("en_US")
 word = input("Enter a Word: ")
+word= word.upper()
+
 
 # Generates all the possible arrangements of the letters in the supplied word
 L = list(word)
