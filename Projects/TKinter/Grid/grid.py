@@ -19,7 +19,7 @@ label04.config(bd=3,relief='groove',width=10,bg='#ffc168')
 label05 = tk.Label(root,text='PERL  \n row=0 \n column=3 \n rowspan=2 ')
 label05.config(bd=3,relief='groove',width=10,bg='#2EB67D')
 
-label06 = tk.Label(root,text='HTML CSS JavaScript \n row=2 \n columnspan=3 \n column=3')
+label06 = tk.Label(root,text='HTML CSS JavaScript \n row=2 \n columnspan=3 \n column=0')
 label06.config(bd=3,relief='groove',width=10,bg='#f7e8d5')
 
 
